@@ -10,7 +10,7 @@
             :router="true"
     >
         <template>
-            <h1>Tian</h1>
+            <h1>Tian<span v-if="menuShow">Admin</span></h1>
         </template>
         <el-menu-item index="/">
             <i class="el-icon-stopwatch"></i>
@@ -28,16 +28,16 @@
             <i class="el-icon-document"></i>
             <span slot="title">文章管理</span>
         </el-menu-item>
-        <el-submenu index="1">
-            <template slot="title">
-                <i class="el-icon-user"></i>
-                <span>用户管理</span>
-            </template>
-            <el-menu-item-group title="分组一">
-                <el-menu-item index="1-1">选项1</el-menu-item>
-                <el-menu-item index="1-2">选项2</el-menu-item>
-            </el-menu-item-group>
-        </el-submenu>
+<!--        <el-submenu index="1">-->
+<!--            <template slot="title">-->
+<!--                <i class="el-icon-user"></i>-->
+<!--                <span>用户管理</span>-->
+<!--            </template>-->
+<!--            <el-menu-item-group title="分组一">-->
+<!--                <el-menu-item index="1-1">选项1</el-menu-item>-->
+<!--                <el-menu-item index="1-2">选项2</el-menu-item>-->
+<!--            </el-menu-item-group>-->
+<!--        </el-submenu>-->
         <el-menu-item index="5">
             <i class="el-icon-chat-dot-round"></i>
             <span slot="title">留言管理</span>

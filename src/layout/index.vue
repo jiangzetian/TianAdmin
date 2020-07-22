@@ -50,6 +50,7 @@
             menuBtn(){
                 this.menuShow = !this.menuShow;
             },
+            //全屏窗口
             bigViewBtn(){
                 if (this.bigView){
                     var element = document.documentElement;
@@ -75,6 +76,7 @@
                 }
                 this.bigView=!this.bigView;
             },
+            //面包屑
             getBreadcrumb() {
                 let routeData = this.$route;
                 if(routeData.name == '首页'){
@@ -110,10 +112,14 @@
     }
     .header{
         background: #fff;
-        border-bottom: 1px solid #eee;
+        //border-bottom: 1px solid #eee;
         .row{
             margin: 10px 0;
             /*height: 100%;*/
+          &:last-child{
+            padding: 10px 0;
+            border-top: 1px solid #eee;
+          }
         }
         .btn{
             display: flex;
