@@ -9,24 +9,26 @@
             <!--右侧头部-->
             <el-header class="header" height="auto">
                 <el-row class="row" type="flex" justify="space-between" align="center">
-                    <el-col class="btn">
+                    <el-col class="btn" :span="1">
                         <i class="el-icon-s-unfold" v-if="!menuShow"  @click="menuBtn"></i>
                         <i class="el-icon-s-fold" v-if="menuShow"  @click="menuBtn"></i>
+                    </el-col>
+                    <el-col class="path" :span="6">
+                      <el-breadcrumb>
+                        <el-breadcrumb-item v-for="item in levelList" :key="item.path" :to='{path:item.path}'>{{item.name}}</el-breadcrumb-item>
+                      </el-breadcrumb>
                     </el-col>
                     <el-col class="avatar">
                         <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
                         <i class="el-icon-full-screen" @click="bigViewBtn"></i>
                     </el-col>
                 </el-row>
-                <el-row class="row">
-                    <el-breadcrumb>
-                        <el-breadcrumb-item v-for="item in levelList" :key="item.path" :to='{path:item.path}'>{{item.name}}</el-breadcrumb-item>
-                    </el-breadcrumb>
-                </el-row>
             </el-header>
             <!--右侧主内容-->
             <el-main class="main">
+              <transition name="el-fade-in" mode="out-in">
                 <router-view></router-view>
+              </transition>
             </el-main>
         </el-container>
     </el-container>
@@ -43,7 +45,9 @@
             return{
                 menuShow:true,
                 bigView:true,
-                levelList:[{path: '/',name: '首页'}]
+                levelList:[
+                    {path: '/',name: '首页'}
+                ]
             }
         },
         methods:{
@@ -79,6 +83,7 @@
             //面包屑
             getBreadcrumb() {
                 let routeData = this.$route;
+                // console.log(routeData);
                 if(routeData.name == '首页'){
                     this.levelList.splice(1,1);
                 }else {
@@ -90,11 +95,13 @@
                 // console.log(this.levelList);
             }
         },
-        watch:{
+      mounted() {
+      },
+      watch:{
             $route(to,form){
                 this.getBreadcrumb();
             }
-        }
+      }
     }
 </script>
 
@@ -113,14 +120,6 @@
     .header{
         background: #fff;
         //border-bottom: 1px solid #eee;
-        .row{
-            margin: 10px 0;
-            /*height: 100%;*/
-          &:last-child{
-            padding: 10px 0;
-            border-top: 1px solid #eee;
-          }
-        }
         .btn{
             display: flex;
             align-items: center;
@@ -128,6 +127,11 @@
                 cursor: pointer;
                 color: #000;
                 font-size: 30px;
+            }
+        }
+        .path{
+            .el-breadcrumb{
+              line-height: 40px;
             }
         }
         .avatar{
@@ -146,4 +150,19 @@
         background: #fff;
         overflow: auto;
     }
+    //.fade-enter {
+    //  transform: translateX(0);
+    //  opacity:0;
+    //}
+    //.fade-leave{
+    //  transform: translateX(100%);
+    //  opacity:1;
+    //}
+    //.fade-enter-active{
+    //  transition:opacity .4s;
+    //}
+    //.fade-leave-active{
+    //  opacity:0;
+    //  transition:opacity .3s;
+    //}
 </style>

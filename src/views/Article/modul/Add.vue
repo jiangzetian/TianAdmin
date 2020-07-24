@@ -1,8 +1,8 @@
 <template>
-    <div class="Add">
+    <div class="article-add">
         <el-row class="btn-row" type="flex" justify="space-between" align="center">
             <el-col :span="22">
-                <h2>文章</h2>
+                <h2>添加文章</h2>
             </el-col>
             <el-col :span="2">
                 <router-link :to="{ path:'show'}">
@@ -16,7 +16,7 @@
                 @change="change"
                 style="min-height: 600px"
         />
-        <button @click="submit">提交</button>
+      <el-button plain type="primary" @click="submit">提交</el-button>
     </div>
 </template>
 

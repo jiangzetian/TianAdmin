@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-<!--    <a class="btn" @click="getUsersData">获取数据</a>-->
+    <a class="btn" @click="getUsersData">获取数据</a>
   </div>
 </template>
 
@@ -22,7 +22,6 @@ export default {
         // console.log(res)
       })
       .catch(err=>{
-
       })
     }
   }
