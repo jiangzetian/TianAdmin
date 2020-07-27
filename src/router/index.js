@@ -14,6 +14,7 @@ import Article from '../views/Article'
 import AddArticle from '../views/Article/modul/Add'
 import ShowArticle from '../views/Article/modul/Show'
 import DetailArticle from '../views/Article/modul/Detail'
+import ArticleCategory from  '../views/Article/modul/Category'
 //User-用户
 import User from '../views/User'
 import ShowUser from '../views/Article/modul/Show'
@@ -111,6 +112,14 @@ const routes = [
         component: DetailArticle,
         meta:{keepAlive:true}
       },
+      {
+        path: 'category',
+        name: '文章类别',
+        component: ArticleCategory,
+        meta:{
+          keepAlive:true
+        }
+      }
     ]
   },
   {

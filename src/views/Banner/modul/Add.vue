@@ -1,30 +1,29 @@
 <template>
     <div class="add">
-        <el-row class="btn-row" type="flex" justify="space-between" align="center">
-            <el-col :span="22">
-                <h2>添加幻灯片</h2>
-            </el-col>
-            <el-col :span="2">
-                <router-link :to="{ path:'show'}">
-                    <el-button plain type="primary">查看幻灯片</el-button>
-                </router-link>
-            </el-col>
-        </el-row>
-        <el-row class="btn-row" type="flex" justify="center" align="center">
-            <el-col :span="12">
+        <el-row class="btn-row">
+            <el-card shadow="never">
+              <div slot="header" class="clearfix">
+                <span>上传幻灯片</span>
+              </div>
                 <el-upload
-                        class="upload-demo"
+                        action="https://image.tianxiaotian.xyz/api/upload"
+                        name="image"
+                        drag
+                        :headers="imgToken"
                         :multiple="true"
-                        action="https://jzt_blog.s3-cn-south-1.qiniucs.com"
-                        :before-upload="beforeAvatarUpload"
                         :data="postData"
-                        :on-success="handleAvatarSuccess"
+                        :before-upload="beforeUpload"
+                        :on-remove="deleteUpload"
+                        :on-success="successUpload"
                         :file-list="fileList"
                         list-type="picture">
-                    <el-button size="small" type="primary">点击上传</el-button>
-                    <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+
+                    <i class="el-icon-upload"></i>
+                    <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+                    <div class="el-upload__tip" slot="tip"></div>
+
                 </el-upload>
-            </el-col>
+            </el-card>
         </el-row>
     </div>
 </template>
@@ -34,26 +33,39 @@
         name: "Add",
         data() {
             return {
-                fileList: [
-                    {
-                        name: 'food.jpeg',
-                        url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
-                    },
-                    {
-                        name: 'food2.jpeg',
-                        url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
-                    }
-                ],
+                imgToken:{},
+                fileList: [],
                 postData:{},
             };
         },
         methods:{
-            beforeAvatarUpload(){
-
+            getImgToken(){
+              this.$api.banner.getUpImgToken({
+                "email": "1139246375@qq.com",
+                "password": "13786079813jzt"
+              }).then(res=>{
+                this.imgToken = res.data;
+              })
             },
-            handleAvatarSuccess(){
-
+            beforeUpload(){},
+            successUpload(response, file, fileList){
+              console.log(response);
+            },
+            deleteUpload(file, fileList){
+              // console.log(file);
+              // let token = this.imgToken.token;
+              // this.$api.banner.deleteUpImg({
+              //   "id": file.response.data.md5,
+              // },{
+              //   "content-type": "application/json",
+              //   "token":token
+              // }).then(res=>{
+              // })
             }
+        },
+        mounted() {
+          //获取图片上传接口
+          this.getImgToken();
         }
     }
 </script>

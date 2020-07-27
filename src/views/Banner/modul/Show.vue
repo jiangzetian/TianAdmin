@@ -1,19 +1,8 @@
 <template>
     <div class="banner-show">
-        <el-row class="btn-row" type="flex" justify="space-between" align="center">
-            <el-col :span="22">
-                <h2>幻灯片列表</h2>
-            </el-col>
-            <el-col :span="2">
-                <router-link :to="{ path:'add'}">
-                    <el-button plain type="primary">添加幻灯片</el-button>
-                </router-link>
-            </el-col>
-        </el-row>
         <el-table
                 :data="tableData"
-                border
-                style="width: 100%">
+                border>
             <el-table-column
                     prop="id"
                     label="编号"
@@ -51,6 +40,7 @@
 </template>
 
 <script>
+
     export default {
         name: "Show",
         data() {

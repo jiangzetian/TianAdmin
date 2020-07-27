@@ -1,15 +1,5 @@
 <template>
     <div class="article-show">
-        <el-row class="btn-row" type="flex" justify="space-between" align="center">
-            <el-col :span="22">
-                <h2>文章列表</h2>
-            </el-col>
-            <el-col :span="2">
-                <router-link :to="{ path:'add'}">
-                    <el-button plain type="primary">添加文章</el-button>
-                </router-link>
-            </el-col>
-        </el-row>
         <el-table
                 :data="tableData"
                 border

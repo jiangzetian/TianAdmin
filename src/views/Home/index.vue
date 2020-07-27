@@ -19,7 +19,7 @@ export default {
     getUsersData(){
       this.$api.home.getUsers({page:2})
       .then(res=>{
-        // console.log(res)
+        console.log(res)
       })
       .catch(err=>{
       })

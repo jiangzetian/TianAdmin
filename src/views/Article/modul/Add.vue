@@ -1,14 +1,7 @@
 <template>
     <div class="article-add">
-        <el-row class="btn-row" type="flex" justify="space-between" align="center">
-            <el-col :span="22">
-                <h2>添加文章</h2>
-            </el-col>
-            <el-col :span="2">
-                <router-link :to="{ path:'show'}">
-                    <el-button plain type="primary">文章列表</el-button>
-                </router-link>
-            </el-col>
+        <el-row class="btn-row" type="flex"  justify="end">
+            <el-button type="primary" size="mini" @click="submit">提交</el-button>
         </el-row>
         <mavon-editor
                 v-model="content"
@@ -16,7 +9,6 @@
                 @change="change"
                 style="min-height: 600px"
         />
-      <el-button plain type="primary" @click="submit">提交</el-button>
     </div>
 </template>
 
@@ -54,6 +46,6 @@
 
 <style lang="scss" scoped>
     .btn-row{
-        margin: 20px 0;
+      margin-bottom: 10px;
     }
 </style>
