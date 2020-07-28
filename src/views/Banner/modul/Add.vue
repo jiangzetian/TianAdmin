@@ -50,6 +50,10 @@
             beforeUpload(){},
             successUpload(response, file, fileList){
               console.log(response);
+              this.$message({
+                'message':'图片上传成功',
+                type: 'success'
+              });
             },
             deleteUpload(file, fileList){
               // console.log(file);
