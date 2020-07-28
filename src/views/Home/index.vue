@@ -1,6 +1,27 @@
 <template>
   <div class="home">
-    <a class="btn" @click="getUsersData">获取数据</a>
+    <el-row :gutter="20">
+        <el-col :span="6">
+          <el-card>
+            <h2>浏览总数：</h2>
+          </el-card>
+        </el-col>
+        <el-col :span="6">
+          <el-card>
+            <h2>文章总数：</h2>
+          </el-card>
+        </el-col>
+        <el-col :span="6">
+          <el-card>
+            <h2>用户总数：</h2>
+          </el-card>
+        </el-col>
+        <el-col :span="6">
+          <el-card>
+            <h2>评论总数：</h2>
+          </el-card>
+        </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -16,14 +37,6 @@ export default {
     }
   },
   methods:{
-    getUsersData(){
-      this.$api.home.getUsers({page:2})
-      .then(res=>{
-        console.log(res)
-      })
-      .catch(err=>{
-      })
-    }
   }
 }
 </script>

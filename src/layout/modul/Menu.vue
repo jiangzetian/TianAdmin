@@ -12,10 +12,19 @@
         <template>
             <h1>Tian<span v-if="menuShow">Admin</span></h1>
         </template>
-            <el-menu-item v-for="item in paths" v-if="item.meta.menuShow" :index="item.path" :key="item.name">
+        <div v-for="item in paths" :key="item.name">
+          <el-menu-item v-if="!item.meta.childrenShow && item.meta.menuShow" :index="item.path">
+            <i :class="item.meta.iconClass"></i>
+            <span slot="title">{{item.name}}</span>
+          </el-menu-item>
+          <el-submenu   v-if="item.meta.childrenShow && item.meta.menuShow" :index="item.path">
+            <template slot="title">
               <i :class="item.meta.iconClass"></i>
-              <span slot="title">{{item.name}}</span>
-            </el-menu-item>
+              <span>{{item.name}}</span>
+            </template>
+            <el-menu-item v-for="(val,index) in item.children" :index="item.path+'/'+val.path" :key="index">{{ val.name }}</el-menu-item>
+          </el-submenu>
+        </div>
     </el-menu>
 </template>
 

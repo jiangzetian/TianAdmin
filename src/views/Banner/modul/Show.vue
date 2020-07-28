@@ -9,10 +9,6 @@
             >
             </el-table-column>
             <el-table-column
-                    prop="name"
-                    label="名字">
-            </el-table-column>
-            <el-table-column
                     prop="src"
                     label="链接">
             </el-table-column>

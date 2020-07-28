@@ -9,17 +9,26 @@
             <!--右侧头部-->
             <el-header class="header" height="auto">
                 <el-row class="row" type="flex" justify="space-between" align="center">
-                    <el-col class="btn" :span="1">
+                    <el-col class="btn" :span="2">
                         <i class="el-icon-s-unfold" v-if="!menuShow"  @click="menuBtn"></i>
                         <i class="el-icon-s-fold" v-if="menuShow"  @click="menuBtn"></i>
                     </el-col>
-                    <el-col class="path" :span="6">
+                    <el-col class="path" :span="8">
                       <el-breadcrumb>
-                        <el-breadcrumb-item v-for="item in levelList" :key="item.path" :to='{path:item.path}'>{{item.name}}</el-breadcrumb-item>
+                        <el-breadcrumb-item v-for="(item,index) in levelList" :key="index+item.path" :to='{path:item.path}'>{{item.name}}</el-breadcrumb-item>
                       </el-breadcrumb>
                     </el-col>
                     <el-col class="avatar">
-                        <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                        <el-dropdown>
+                            <span class="el-dropdown-link">
+                              <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                            </span>
+                            <el-dropdown-menu slot="dropdown">
+                              <el-dropdown-item>黄金糕</el-dropdown-item>
+                              <el-dropdown-item>狮子头</el-dropdown-item>
+                              <el-dropdown-item>螺蛳粉</el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
                         <i class="el-icon-full-screen" @click="bigViewBtn"></i>
                     </el-col>
                 </el-row>
@@ -46,7 +55,7 @@
                 menuShow:true,
                 bigView:true,
                 levelList:[
-                    {path: '/',name: '首页'}
+                    {path: '/',name: '仪表盘'}
                 ]
             }
         },
@@ -82,20 +91,30 @@
             },
             //面包屑
             getBreadcrumb() {
-                let routeData = this.$route;
+                // let routeData = this.$route;
                 // console.log(routeData);
-                if(routeData.name == '首页'){
-                    this.levelList.splice(1,1);
-                }else {
-                    this.levelList[1]={
-                        path:routeData.path,
-                        name:routeData.name,
-                    }
-                }
+                // if(routeData.path == '/'){
+                //     this.levelList.splice(1,1);
+                // }else {
+                //     this.levelList[1]={
+                //         path:routeData.path,
+                //         name:routeData.name,
+                //     }
+                // }
                 // console.log(this.levelList);
+              let matched = this.$route.matched.filter(item => item.name)
+              const first = matched[0];
+              if (first && first.name !== '仪表盘') {
+                matched = [{path: '/',name: '仪表盘'}].concat(matched)
+              }
+              if(first && first.name === '仪表盘'){
+                matched ='';
+              }
+              this.levelList = matched;
             }
         },
       mounted() {
+        this.getBreadcrumb()
       },
       watch:{
             $route(to,form){
