@@ -14,6 +14,7 @@
       <transition name="el-zoom-in-top" mode="out-in">
         <router-view></router-view>
       </transition>
+
     </div>
 </template>
 
@@ -21,8 +22,7 @@
     export default {
         name: "Banner",
         data() {
-            return {
-            }
+            return {}
         }
     }
 </script>

@@ -37,6 +37,11 @@ export default {
     }
   },
   methods:{
+    study(){
+    }
+  },
+  mounted() {
+    this.study();
   }
 }
 </script>
