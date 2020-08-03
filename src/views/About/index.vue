@@ -21,6 +21,14 @@
               <div slot="header" class="clearfix">
                 <span>本人媒体</span>
               </div>
+              <el-form>
+                <el-form-item label="">
+                  <el-input type="textarea"></el-input>
+                </el-form-item>
+                <el-form-item>
+                  <el-button type="primary">保存</el-button>
+                </el-form-item>
+              </el-form>
             </el-card>
           </el-col>
       </el-row>
