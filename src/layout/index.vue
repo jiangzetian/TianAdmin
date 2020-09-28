@@ -102,7 +102,7 @@
                 //     }
                 // }
                 // console.log(this.levelList);
-              let matched = this.$route.matched.filter(item => item.name)
+              let matched = this.$route.matched.filter(item => item.name);
               const first = matched[0];
               if (first && first.name !== '仪表盘') {
                 matched = [{path: '/',name: '仪表盘'}].concat(matched)
@@ -111,6 +111,7 @@
                 matched ='';
               }
               this.levelList = matched;
+                // console.log(matched)
             }
         },
       mounted() {

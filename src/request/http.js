@@ -10,6 +10,7 @@ instance.interceptors.request.use(config =>{
         // console.log(config);
         return config;
     },error => {
+        return error;
         // console.log(error);
     }
 );
@@ -19,10 +20,10 @@ instance.interceptors.response.use(response=>{
         if (response.status === 200){
             return Promise.resolve(response.data);
         }else {
-            alert('数据获取失败！')
+            return Promise.reject(response.data)
         }
     }, error=>{
-        console.log(error);
+    return Promise.reject(error)
     }
 );
 

@@ -8,6 +8,8 @@ import {banner} from './modul/banner'
 import {about} from './modul/about'
 import {article} from './modul/article'
 import {user} from './modul/user'
+import {seting} from './modul/seting'
+
 
 Vue.use(VueRouter)
 
@@ -23,6 +25,7 @@ const routes = [
   about,
   article,
   user,
+  seting,
 ];
 
 const router = new VueRouter({

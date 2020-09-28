@@ -20,7 +20,7 @@
           <el-submenu   v-if="item.meta.childrenShow && item.meta.menuShow" :index="item.path">
             <template slot="title">
               <i :class="item.meta.iconClass"></i>
-              <span>{{item.name}}</span>
+              <span v-if="menuShow">{{item.name}}</span>
             </template>
             <el-menu-item v-for="(val,index) in item.children" :index="item.path+'/'+val.path" :key="index">{{ val.name }}</el-menu-item>
           </el-submenu>
@@ -47,7 +47,7 @@
           },
         },
         mounted() {
-          this.initPath()
+            this.initPath()
         }
     }
 </script>

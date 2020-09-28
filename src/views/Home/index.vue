@@ -1,27 +1,6 @@
 <template>
   <div class="home">
-    <el-row :gutter="20">
-        <el-col :span="6">
-          <el-card>
-            <h2>浏览总数：</h2>
-          </el-card>
-        </el-col>
-        <el-col :span="6">
-          <el-card>
-            <h2>文章总数：</h2>
-          </el-card>
-        </el-col>
-        <el-col :span="6">
-          <el-card>
-            <h2>用户总数：</h2>
-          </el-card>
-        </el-col>
-        <el-col :span="6">
-          <el-card>
-            <h2>评论总数：</h2>
-          </el-card>
-        </el-col>
-    </el-row>
+      <avue-data-display :option="option"></avue-data-display>
   </div>
 </template>
 
@@ -33,27 +12,56 @@ export default {
   },
   data(){
     return{
-      'text':'11111'
+        option: {
+            span:6,
+            data: [
+                {
+                    click: function (item) {
+                        alert(JSON.stringify(item));
+                    },
+                    count: 100,
+                    title: '总访问量',
+                    href:'https://avuejs.com',
+                    target:'_blank'
+                },
+                {
+                    click: function (item) {
+                        alert(JSON.stringify(item));
+                    },
+                    count: '3,000',
+                    title: '总文章数',
+                    href:'https://avuejs.com',
+                    target:'_blank'
+                },
+                {
+                    click: function (item) {
+                        alert(JSON.stringify(item));
+                    },
+                    count: '20,000',
+                    title: '今日活跃',
+                    href:'https://avuejs.com',
+                    target:'_blank'
+                },
+                {
+                    click: function (item) {
+                        alert(JSON.stringify(item));
+                    },
+                    count: '40,000',
+                    title: '今日文章',
+                    href:'https://avuejs.com',
+                    target:'_blank'
+                }
+            ]
+        },
     }
   },
   methods:{
-    study(){
-    }
+
   },
   mounted() {
-    this.study();
+
   }
 }
 </script>
 <style lang="scss" scoped>
-.btn{
-  cursor: pointer;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 200px;
-  height: 60px;
-  background: #ccc;
-}
 </style>

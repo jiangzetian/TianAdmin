@@ -12,7 +12,7 @@ export const article = {
     meta:{
         keepAlive:true,
         menuShow:true,
-        childrenShow:false,
+        childrenShow:true,
         iconClass:'el-icon-document',
     },
     children: [
@@ -23,24 +23,24 @@ export const article = {
             meta:{keepAlive:true}
         },
         {
-            path: 'add',
-            name: '添加文章',
-            component: AddArticle,
-            meta:{keepAlive:true}
-        },
-        {
-            path: 'detail',
-            name: '文章详情',
-            component: DetailArticle,
-            meta:{keepAlive:true}
-        },
-        {
             path: 'category',
             name: '文章类别',
             component: ArticleCategory,
             meta:{
                 keepAlive:true
             }
-        }
+        },
+        {
+            path: 'add',
+            name: '添加文章',
+            component: AddArticle,
+            meta:{keepAlive:true}
+        },
+        // {
+        //     path: 'detail',
+        //     name: '文章详情',
+        //     component: DetailArticle,
+        //     meta:{keepAlive:true}
+        // },
     ]
 }

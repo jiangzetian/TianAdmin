@@ -1,9 +1,9 @@
 import User from "../../views/User/index";
-import ShowUser from "../../views/Article/modul/Show";
+import ShowUser from "../../views/User/modul/Show";
 
 export const user = {
     path: '/user',
-        name: '用户管理',
+    name: '用户管理',
     component: User,
     redirect:'/user/show',
     meta:{
@@ -11,7 +11,7 @@ export const user = {
         menuShow:true,
         childrenShow:false,
         iconClass:'el-icon-user',
-},
+    },
     children: [
         {
             path: 'show',
@@ -20,4 +20,4 @@ export const user = {
             meta:{keepAlive:true}
         }
     ]
-}
+};

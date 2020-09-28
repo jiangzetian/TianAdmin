@@ -1,24 +1,33 @@
 <template>
     <div class="login">
-        <h1>login</h1>
+        <avue-login :option="option" @submit="submit"></avue-login>
     </div>
 </template>
 
 <script>
+    import {loginOption} from './option.js'
     export default {
-        name: "Login"
+        name: "Login",
+        data(){
+            return{
+                codesrc: '',
+                option:loginOption
+            }
+        },
+        methods:{
+            setOption(){
+
+            },
+            submit(){
+                this.$router.push('/')
+            }
+        },
+        mounted() {
+
+        }
     }
 </script>
 
 <style scoped>
-    .login{
-        width: 100%;
-        height: 100%;
-        background: #2D3A4B;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 44px;
-        color: #fff;
-    }
+
 </style>

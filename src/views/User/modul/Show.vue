@@ -52,7 +52,12 @@
 
 <script>
 export default {
-name: "Show"
+  name: "Show",
+  data(){
+    return{
+      tableData:[]
+    }
+  }
 }
 </script>
 
