@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <Login v-if="!$route.meta.keepAlive"></Login>
+    <transition name="el-zoom-in-top" mode="out-in">
+      <router-view v-if="!$route.meta.keepAlive"></router-view>
+    </transition>
     <Layout v-if="$route.meta.keepAlive"></Layout>
   </div>
 </template>
 
 <script>
   import Layout from '@/layout';
-  import Login from  '@/views/Login'
   export default {
     name:"App",
     components:{
       Layout:Layout,
-      Login:Login,
     }
   }
 </script>

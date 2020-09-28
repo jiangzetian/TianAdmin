@@ -1,11 +1,12 @@
 <template>
   <div class="home">
       <avue-data-display :option="option"></avue-data-display>
+      <el-button @click="getData">请求</el-button>
   </div>
 </template>
 
 <script>
-
+import {getUsers} from '../../request/api/home'
 export default {
   name: 'Home',
   components: {
@@ -56,7 +57,10 @@ export default {
     }
   },
   methods:{
-
+      async getData(){
+          let res = await getUsers({});
+          console.log(res);
+      }
   },
   mounted() {
 

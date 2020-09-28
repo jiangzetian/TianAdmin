@@ -7,9 +7,8 @@ export const user = {
     component: User,
     redirect:'/user/show',
     meta:{
-    keepAlive:true,
+        keepAlive:true,
         menuShow:true,
-        childrenShow:false,
         iconClass:'el-icon-user',
     },
     children: [
@@ -17,7 +16,10 @@ export const user = {
             path: 'show',
             name: '查看用户',
             component: ShowUser,
-            meta:{keepAlive:true}
+            meta:{
+                keepAlive:true,
+                menuShow:true,
+            }
         }
     ]
 };

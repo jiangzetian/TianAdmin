@@ -20,6 +20,7 @@ const showTableOption = {
         }
     ]
 };
+
 const categoryTableOption =  {
     title:'文章类别',
     page:false,

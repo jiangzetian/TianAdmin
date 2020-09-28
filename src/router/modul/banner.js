@@ -10,7 +10,6 @@ export const banner = {
     meta:{
         keepAlive:true,
         menuShow:true,
-        childrenShow:false,
         iconClass:'el-icon-data-analysis',
     },
     children: [
@@ -20,13 +19,17 @@ export const banner = {
             component: ShowBanner,
             meta:{
                 keepAlive:true,
+                menuShow:true,
             }
         },
         {
             path: 'add',
             name: '添加幻灯片',
             component: AddBanner,
-            meta:{keepAlive:true}
+            meta:{
+                keepAlive:true,
+                menuShow:true,
+            }
         },
     ]
 }

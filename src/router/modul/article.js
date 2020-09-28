@@ -8,11 +8,10 @@ export const article = {
     path: '/article',
     name: '文章管理',
     component: Article,
-    redirect:'/article/show',
+    // redirect:'/article/show',
     meta:{
         keepAlive:true,
         menuShow:true,
-        childrenShow:true,
         iconClass:'el-icon-document',
     },
     children: [
@@ -20,21 +19,28 @@ export const article = {
             path: 'show',
             name: '文章列表',
             component: ShowArticle,
-            meta:{keepAlive:true}
+            meta:{
+                keepAlive:true,
+                menuShow:true,
+            }
         },
         {
             path: 'category',
             name: '文章类别',
             component: ArticleCategory,
             meta:{
-                keepAlive:true
+                keepAlive:true,
+                menuShow:true,
             }
         },
         {
             path: 'add',
             name: '添加文章',
             component: AddArticle,
-            meta:{keepAlive:true}
+            meta:{
+                keepAlive:true,
+                menuShow:true,
+            }
         },
         // {
         //     path: 'detail',

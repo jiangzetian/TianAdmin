@@ -5,8 +5,8 @@ export const login ={
     name: '登录',
     component: Login,
     meta:{
-    keepAlive:false,
+        keepAlive:false,
         menuShow:false,
         iconClass:'',
     }
-}
+};

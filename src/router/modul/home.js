@@ -8,6 +8,5 @@ export const home ={
         keepAlive:true,
         menuShow:true,
         iconClass:'el-icon-stopwatch',
-        roles:'user'
     }
 }
