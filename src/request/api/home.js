@@ -1,12 +1,12 @@
 import base from "../base";
 import axios from '../http'
 
-function getUsers(params){
+function getUsers(data){
     // return axios.get(`${base.baseurl}/users`,params);
     return axios({
-        method:'GET',
-        url:`${base.baseurl}/posts`,
-        params:params,
+        method:'POST',
+        url:`${base.baseurl}/api/login/signup`,
+        data:data,
     })
 }
 

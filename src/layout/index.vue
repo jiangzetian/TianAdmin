@@ -24,9 +24,7 @@
                               <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
                             </span>
                             <el-dropdown-menu slot="dropdown">
-                              <el-dropdown-item>黄金糕</el-dropdown-item>
-                              <el-dropdown-item>狮子头</el-dropdown-item>
-                              <el-dropdown-item>螺蛳粉</el-dropdown-item>
+                              <el-dropdown-item @click.native="signOutBtn">退出登录</el-dropdown-item>
                             </el-dropdown-menu>
                         </el-dropdown>
                         <i class="el-icon-full-screen" @click="bigViewBtn"></i>
@@ -44,7 +42,9 @@
 </template>
 
 <script>
-    import Menu from './modul/Menu'
+    import Menu from './modul/Menu';
+    import {signOut} from "../request/api/login";
+    import router from "../router";
     export default {
         name: "Layout",
         components:{
@@ -91,17 +91,6 @@
             },
             //面包屑
             getBreadcrumb() {
-                // let routeData = this.$route;
-                // console.log(routeData);
-                // if(routeData.path == '/'){
-                //     this.levelList.splice(1,1);
-                // }else {
-                //     this.levelList[1]={
-                //         path:routeData.path,
-                //         name:routeData.name,
-                //     }
-                // }
-                // console.log(this.levelList);
               let matched = this.$route.matched.filter(item => item.name);
               const first = matched[0];
               if (first && first.name !== '仪表盘') {
@@ -111,7 +100,12 @@
                 matched ='';
               }
               this.levelList = matched;
-                // console.log(matched)
+            },
+            //退出登录
+            async signOutBtn(){
+                await signOut({});
+                await sessionStorage.clear();
+                await router.push({path:'/login'})
             }
         },
       mounted() {

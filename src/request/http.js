@@ -1,29 +1,51 @@
 import axios from 'axios';
+import router from "../router";
+import {Loading,Message} from 'element-ui';
 
-var  instance = axios.create({
+let options = {
+    lock: true,
+    text: '加载中',
+    spinner: 'el-icon-loading',
+    background: 'rgba(0, 0, 0, 0.7)'
+};
+
+let  instance = axios.create({
     timeout:1000*10//设置超时时间
-})
+});
 
-instance.defaults.headers.post['Content-Type'] = 'application/json';
+// instance.defaults.headers.post['Content-Type'] = 'application/json';
 
 instance.interceptors.request.use(config =>{
-        // console.log(config);
+        Loading.service(options);
+        if (sessionStorage.getItem("token")) {
+            config.headers.Authorization = sessionStorage.getItem("token");
+        }
         return config;
     },error => {
+        Loading.service(options);
         return error;
-        // console.log(error);
     }
 );
 
 instance.interceptors.response.use(response=>{
-        // console.log(response);
+        Loading.service(options).close();
         if (response.status === 200){
-            return Promise.resolve(response.data);
+            switch (response.data.code) {
+                case 200:
+                    return Promise.resolve(response.data);
+                case 401:
+                    router.push({path:'/login'});
+                    sessionStorage.clear();
+                    Message.error('检测到您还未登录哦~');
+                    return Promise.reject(response.data);
+            }
         }else {
+            Message.error('网络开了个小差~');
             return Promise.reject(response.data)
         }
     }, error=>{
-    return Promise.reject(error)
+        Loading.service(options).close();
+        return Promise.reject(error)
     }
 );
 
