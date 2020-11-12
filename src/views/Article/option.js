@@ -23,7 +23,7 @@ const showTableOption = {
 
 const categoryTableOption =  {
     title:'文章类别',
-    page:false,
+    page:true,
     align:'center',
     menuAlign:'center',
     column:[
@@ -38,7 +38,13 @@ const categoryTableOption =  {
             rules: [{
                 required: true,
                 message: "请输入分类的名称",
-            }]
+            }],
+            search:true,
+            searchRules: [{
+                required: false,
+                message: "请输入分类的名称",
+                trigger: "blur"
+            }],
         },{
             label: "排序",
             prop:'sort',

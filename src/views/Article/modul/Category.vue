@@ -3,6 +3,10 @@
     <avue-crud
             :data="data"
             :option="option"
+            :page.sync="page"
+            :search.sync="search"
+            @on-load="onLoad"
+            @search-change="searchChange"
             @refresh-change="getList"
             @row-save="create"
             @row-update="update"
@@ -20,13 +24,35 @@ export default {
   data() {
     return {
       data: [],
-      option:categoryTableOption
+      option:categoryTableOption,
+      search:{},
+      page: {
+        pageSize: 10,
+        currentPage:1,
+        pagerCount:5,
+      },
     }
   },
   methods:{
+    async onLoad(page){
+      this.page = page;
+      this.getList();
+    },
     async getList(){
-      let res = await list({});
-      this.data = res.data;
+      let data={
+        'pageSize':this.page.pageSize,
+        'currentPage':this.page.currentPage,
+        'name':this.search.name?this.search.name:'',
+      };
+      let res = await list(data);
+      console.log(res.data.data);
+      this.data = res.data.data;
+      this.page.total = res.data.total;
+    },
+    async searchChange(params,done){
+      this.search = params;
+      this.getList();
+      done();
     },
     async create(row,done,loading){
       let res = await create(row);
@@ -54,10 +80,10 @@ export default {
           type: 'success'
         });
       }
-    }
+    },
   },
   mounted() {
-    this.getList();
+    // this.getList();
   }
 }
 </script>
