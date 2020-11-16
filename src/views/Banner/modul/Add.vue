@@ -29,6 +29,7 @@
 </template>
 
 <script>
+    import {getUpImgToken,deleteUpImg} from '@/request/api/banner'
     export default {
         name: "Add",
         data() {
@@ -40,11 +41,12 @@
         },
         methods:{
             getImgToken(){
-              this.$api.banner.getUpImgToken({
+              getUpImgToken({
                 "email": "1139246375@qq.com",
                 "password": "13786079813jzt"
               }).then(res=>{
                 this.imgToken = res.data;
+                console.log(res.data)
               })
             },
             beforeUpload(){},
@@ -56,15 +58,15 @@
               });
             },
             deleteUpload(file, fileList){
-              // console.log(file);
-              // let token = this.imgToken.token;
-              // this.$api.banner.deleteUpImg({
-              //   "id": file.response.data.md5,
-              // },{
-              //   "content-type": "application/json",
-              //   "token":token
-              // }).then(res=>{
-              // })
+              console.log(file);
+              let token = this.imgToken.token;
+              deleteUpImg({
+                "quota": file.response.data.md5,
+              },{
+                "content-type": "application/json",
+                "token":token
+              }).then(res=>{
+              })
             }
         },
         mounted() {
