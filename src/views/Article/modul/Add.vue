@@ -65,8 +65,8 @@
         <el-button @click="drawer = true" type="primary" style="margin-left: 16px;">
           设置
         </el-button>
-<!--        <el-button type="primary" :disabled="!articleStting" @click="submit">提交</el-button>-->
-        <el-button type="primary" @click="submit">提交</el-button>
+        <el-button type="primary" :disabled="!articleStting" @click="submit">提交</el-button>
+<!--        <el-button type="primary" @click="submit">提交</el-button>-->
       </el-row>
     </div>
 </template>

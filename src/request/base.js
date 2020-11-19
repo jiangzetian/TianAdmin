@@ -1,7 +1,6 @@
 const base = {
     imgApiUrl:'https://image.tianxiaotian.xyz',
-    // baseurl:'https://tianxiaotian.xyz'
-    baseurl:'http://127.0.0.1:8000'
+    baseurl:'http://129.226.165.81'
 };
 
 export default base;

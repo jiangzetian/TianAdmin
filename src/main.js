@@ -12,8 +12,12 @@ Vue.use(Avue);
 Vue.use(ElementUI);
 
 Vue.config.productionTip = false;
-
 new Vue({
   router,
   render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');
+
+router.beforeEach((to, from, next) => {
+  document.title = to.name
+  next()
+})
