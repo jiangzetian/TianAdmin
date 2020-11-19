@@ -7,14 +7,22 @@
         <el-form  label-width="70px" :model="formData" :rules="rules" ref="articleForm">
           <el-row>
             <el-col :span="24">
-              <el-form-item label="封面：">
+              <el-form-item label="封面：" prop="url">
                 <el-upload
-                        class="upload-demo"
+                        action="https://image.tianxiaotian.xyz/api/upload"
+                        name="image"
                         drag
-                        action="https://jsonplaceholder.typicode.com/posts/"
-                        multiple>
+                        :headers="imgToken"
+                        :multiple="false"
+                        :before-upload="beforeUpload"
+                        :on-remove="deleteUpload"
+                        :on-success="successUpload"
+                        :file-list="fileList"
+                        list-type="picture">
+
                   <i class="el-icon-upload"></i>
                   <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+                  <div class="el-upload__tip" slot="tip"></div>
                 </el-upload>
               </el-form-item>
             </el-col>
@@ -74,6 +82,7 @@
 <script>
     import { mavonEditor } from 'mavon-editor'
     import 'mavon-editor/dist/css/index.css'
+    import {getUpImgToken,deleteUpImg} from '@/request/api/common'
     export default {
         name: "Add",
         components: {
@@ -83,12 +92,16 @@
             return {
               articleStting:false,
               formData:{
+                url:'',
                 title:'',
                 desc:'',
                 category:'',
                 date:''
               },
               rules: {
+                url: [
+                  { required: true, message: '请上传文章封面', trigger: 'change' },
+                ],
                 title: [
                   { required: true, message: '请输入文章标题', trigger: 'blur' },
                 ],
@@ -104,20 +117,52 @@
               },
               content:'', // 输入的markdown
               html:'',    // 及时转的html
-              drawer: false,
+              drawer: false,//设置栏目
+              imgToken:{},//图片上传token
+              fileList: [],//上传文件列表
             }
         },
         methods: {
+          //获取图片上传token
+          getImgToken(){
+            getUpImgToken({
+              "email": "1139246375@qq.com",
+              "password": "13786079813jzt"
+            }).then(res=>{
+              this.imgToken = res.data;
+              // console.log(res.data)
+            })
+          },
+          //上传前
+          beforeUpload(){},
+          //成功上传
+          successUpload(response, file, fileList){
+            this.$message({
+              'message':'图片上传成功',
+              'type': 'success'
+            });
+            this.formData.url = response.data.url;
+          },
+          //删除
+          deleteUpload(file, fileList){
+            this.formData.url = "";
+            let token = this.imgToken.token;
+            deleteUpImg({
+              "md5": file.response.data.md5,
+            },{
+              "content-type": "application/json",
+              "token":token
+            }).then(res=>{
+            })
+          },
           //保存文章设置
           onSubmit(){
             this.$refs['articleForm'].validate((valid) => {
-              if (valid) {
+              if (valid && this.formData.url) {
                 this.articleStting = true;
                 this.drawer = false;
-                console.log(this.formData)
               } else {
                 this.articleStting = false;
-                return false;
               }
             });
           },
@@ -126,14 +171,14 @@
             // render 为 markdown 解析后的结果[html]
             this.html = render;
           },
-          // 提交
+          //上传文章
           submit(){
             console.log(this.content);
             console.log(this.html);
           }
         },
         mounted() {
-
+          this.getImgToken();
         }
     }
 </script>

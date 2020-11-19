@@ -29,7 +29,7 @@
 </template>
 
 <script>
-    import {getUpImgToken,deleteUpImg} from '@/request/api/banner'
+    import {getUpImgToken,deleteUpImg,getImg} from '@/request/api/banner'
     export default {
         name: "Add",
         data() {

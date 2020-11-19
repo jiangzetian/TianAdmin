@@ -10,7 +10,7 @@
 
 ``npm install``
 
-注：本项目有使用scss，注意
+注：本项目有使用scss
 
 ``npm run serve``
 
