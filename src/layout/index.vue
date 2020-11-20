@@ -43,7 +43,7 @@
 
 <script>
     import Menu from './modul/Menu';
-    import {signOut} from "../request/api/login";
+    import LoginAPI from "@/request/api/login";
     import router from "../router";
     export default {
         name: "Layout",
@@ -103,9 +103,9 @@
             },
             //退出登录
             async signOutBtn(){
-                await signOut({});
-                await sessionStorage.clear();
-                await router.push({path:'/login'})
+                await LoginAPI.signOut({});
+                sessionStorage.clear();
+                router.push({path:'/login'})
             }
         },
       mounted() {

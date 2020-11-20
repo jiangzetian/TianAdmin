@@ -16,7 +16,7 @@
 
 <script>
     import {loginOption} from './option.js'
-    import {signUp} from "../../request/api/login";
+    import LoginAPI from "@/request/api/login";
     export default {
         name: "Login",
         data(){
@@ -30,8 +30,8 @@
         methods:{
             async submit(e){
                 if(!e){return false}
-                let res = await signUp(e);
-                if (res.code===200){
+                let res = await LoginAPI.signUp(e);
+                if (res.data.token){
                     sessionStorage.setItem("token",res.data.token);
                     this.$router.push({path:"/"})
                 }
