@@ -1,6 +1,6 @@
 const base = {
-    imgApiUrl:'https://image.tianxiaotian.xyz',
-    baseurl:'http://129.226.165.81'
+    imgApiUrl:process.env.VUE_APP_API_image_URL,
+    baseurl:process.env.VUE_APP_API_BASE_URL
 };
 
 export default base;
