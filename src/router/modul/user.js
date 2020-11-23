@@ -8,7 +8,7 @@ export const user = {
     redirect:'/user/show',
     meta:{
         keepAlive:true,
-        menuShow:true,
+        menuShow:false,
         iconClass:'el-icon-user',
     },
     children: [

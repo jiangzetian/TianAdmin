@@ -9,7 +9,7 @@ export const banner = {
     redirect:'/banner/show',
     meta:{
         keepAlive:true,
-        menuShow:true,
+        menuShow:false,
         iconClass:'el-icon-data-analysis',
     },
     children: [

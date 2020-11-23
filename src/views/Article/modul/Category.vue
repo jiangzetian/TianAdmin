@@ -18,7 +18,7 @@
 
 <script>
 import {categoryTableOption} from '../option.js'
-import articleAPI from "@/request/api/article";
+import {categoryAPI} from "@/request/api/article";
 export default {
   name: "Category",
   data() {
@@ -44,7 +44,7 @@ export default {
         'currentPage':this.page.currentPage,
         'name':this.search.name?this.search.name:'',
       };
-      let res = await articleAPI.list(data);
+      let res = await categoryAPI.list(data);
       this.data = res.data.data;
       this.page.total = res.data.total;
     },
@@ -54,12 +54,12 @@ export default {
       done();
     },
     async create(row,done,loading){
-      let res = await articleAPI.create(row);
+      let res = await categoryAPI.create(row);
       this.getList();
       done()
     },
     async update(row,index,done,loading){
-      let res = await articleAPI.update(row);
+      let res = await categoryAPI.update(row);
       this.getList();
       done()
     },
@@ -70,7 +70,7 @@ export default {
         type: 'warning'
       });
       if(confirm){
-        let res = await articleAPI.del(row);
+        let res = await categoryAPI.del(row);
         await this.getList();
         await this.$message({
           message: '删除成功!',

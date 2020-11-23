@@ -1,7 +1,7 @@
 import axios from "@/request/http";
 import base from "@/request/base";
 
-const articleAPI = {
+const categoryAPI = {
     index(params){
         return axios({
             method:'GET',
@@ -39,4 +39,42 @@ const articleAPI = {
     },
 };
 
-export default articleAPI;
+const articleAPI ={
+    list(params){
+        return axios({
+            method:'GET',
+            url:`${base.baseurl}/api/article/page`,
+            params:params,
+        })
+    },
+    detail(params){
+        return axios({
+            method:'GET',
+            url:`${base.baseurl}/api/article/detail`,
+            params:params,
+        })
+    },
+    create(data){
+        return axios({
+            method:'POST',
+            url:`${base.baseurl}/api/article/create`,
+            data:data,
+        })
+    },
+    update(data){
+        return axios({
+            method:'POST',
+            url:`${base.baseurl}/api/article/update`,
+            data:data,
+        })
+    },
+    del(data){
+        return axios({
+            method:'DELETE',
+            url:`${base.baseurl}/api/article/delete`,
+            data:data,
+        })
+    },
+};
+
+export {categoryAPI,articleAPI};

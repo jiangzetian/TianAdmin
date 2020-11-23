@@ -49,4 +49,4 @@ export const article = {
         //     meta:{keepAlive:true}
         // },
     ]
-}
+};

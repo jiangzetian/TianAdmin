@@ -1,23 +1,70 @@
 const showTableOption = {
     title:'文章列表',
-    page:false,
+    page:true,
     align:'center',
     menuAlign:'center',
+    searchShow:false,
+    editBtn:false,
+    addBtn:false,
     column:[
         {
-            label:'姓名',
-            prop:'name'
+            label:'编号',
+            prop:'id',
+            display:false,
         },
         {
-            label:'性别',
-            prop:'sex'
-        },{
-            label: "日期",
-            prop: "date",
-            type: "date",
-            format: "yyyy-MM-dd hh:mm:ss",
-            valueFormat: "yyyy-MM-dd hh:mm:ss",
-        }
+            label:'标题',
+            prop:'title',
+            search:true,
+            searchRules: [{
+                required: false,
+                message: "请输入文字的标题",
+                trigger: "blur"
+            }],
+        },
+        {
+            label: "描述",
+            prop:'desc',
+        },
+        {
+            label: "分类",
+            prop:'category',
+            props: {
+                label: 'name',
+                value: 'id'
+            },
+            dicData:[]
+        },
+        {
+            label: "封面",
+            prop:'url',
+            type:'img'
+        },
+        {
+            label: "发布时间",
+            prop:'date',
+            type:'date'
+        },
+        {
+            label: "内容",
+            prop:'content',
+            hide:true,
+        },
+        {
+            label: "HTML",
+            prop:'html',
+            hide:true,
+        },
+        {
+            label: "访问",
+            prop:'visits',
+            type:'number',
+        },
+        {
+            label: "点赞",
+            prop:'likes',
+            type:'number',
+        },
     ]
 };
 
@@ -26,6 +73,7 @@ const categoryTableOption =  {
     page:true,
     align:'center',
     menuAlign:'center',
+    searchShow:false,
     column:[
         {
             label:'编号',
@@ -45,7 +93,8 @@ const categoryTableOption =  {
                 message: "请输入分类的名称",
                 trigger: "blur"
             }],
-        },{
+        },
+        {
             label: "排序",
             prop:'sort',
             type:'number',

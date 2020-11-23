@@ -6,7 +6,7 @@ export const seting ={
     component: Seting,
     meta:{
         keepAlive:true,
-        menuShow:true,
+        menuShow:false,
         iconClass:'el-icon-setting',
     }
 }
