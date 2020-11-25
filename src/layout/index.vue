@@ -103,9 +103,16 @@
             },
             //退出登录
             async signOutBtn(){
-                await LoginAPI.signOut({});
-                sessionStorage.clear();
-                router.push({path:'/login'})
+                let confirm = await this.$confirm('你确定要退出登录吗？', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                });
+                if(confirm){
+                    await LoginAPI.signOut({});
+                    sessionStorage.clear();
+                    router.push({path:'/login'});
+                }
             }
         },
       mounted() {

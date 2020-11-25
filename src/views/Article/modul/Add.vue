@@ -18,7 +18,7 @@
                 ref="md"
                 @change="change"
                 :toolbars="editorOption"
-                style="min-height: 570px"
+                style="min-height: 550px"
       />
 
       <!--文章设置栏-->

@@ -1,7 +1,8 @@
 const loginOption = {
     width: '100%',
+    labelWidth:60,
     time: 60,
-    codeType: 'phone', //phone为手机验证码/img为图片验证码
+    codeType: 'phone', //phone为手机验证码/img为图片验证码为图片验证码
     column: {
         username: {
             label: '账号',

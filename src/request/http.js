@@ -38,7 +38,7 @@ instance.interceptors.response.use(response=>{
             case 401:
                 router.push({path:'/login'});
                 sessionStorage.clear();
-                Message.error('检测到您还未登录哦~');
+                Message.error(response.data.msg);
                 return Promise.reject(response.data);
         }
     }, error=>{
