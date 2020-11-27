@@ -6,7 +6,7 @@ export const about={
     component: About,
     meta:{
         keepAlive:true,
-        menuShow:true,
+        menuShow:false,
         iconClass:'el-icon-postcard',
     }
 }

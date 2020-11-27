@@ -18,6 +18,6 @@ new Vue({
 }).$mount('#app');
 
 router.beforeEach((to, from, next) => {
-  document.title = to.name
+  document.title = `${to.name} | TianAdmin`;
   next()
-})
+});
