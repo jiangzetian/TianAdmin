@@ -11,6 +11,7 @@ const showTableOption = {
             label:'编号',
             prop:'id',
             display:false,
+            width:'170px'
         },
         {
             label:'标题',
@@ -45,16 +46,16 @@ const showTableOption = {
             prop:'date',
             type:'date'
         },
-        {
-            label: "内容",
-            prop:'content',
-            hide:true,
-        },
-        {
-            label: "HTML",
-            prop:'html',
-            hide:true,
-        },
+        // {
+        //     label: "内容",
+        //     prop:'content',
+        //     hide:true,
+        // },
+        // {
+        //     label: "HTML",
+        //     prop:'html',
+        //     hide:true,
+        // },
         {
             label: "访问",
             prop:'visits',
