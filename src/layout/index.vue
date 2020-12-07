@@ -32,16 +32,18 @@
                 </el-row>
             </el-header>
             <!--右侧主内容-->
-            <el-main
-                    class="main"
-                    v-loading="loading"
-                    element-loading-text="拼命加载中"
-                    element-loading-background="#fff"
-            >
-              <transition name="el-fade-in" mode="out-in">
-                <router-view></router-view>
-              </transition>
+            <el-card class="main-card">
+                <el-main
+                        class="main"
+                        v-loading="loading"
+                        element-loading-text="拼命加载中"
+                        element-loading-background="#fff"
+                >
+                  <transition name="el-fade-in" mode="out-in">
+                        <router-view></router-view>
+                  </transition>
             </el-main>
+            </el-card>
         </el-container>
     </el-container>
 </template>
@@ -183,19 +185,10 @@
         background: #fff;
         overflow: auto;
     }
-    //.fade-enter {
-    //  transform: translateX(0);
-    //  opacity:0;
-    //}
-    //.fade-leave{
-    //  transform: translateX(100%);
-    //  opacity:1;
-    //}
-    //.fade-enter-active{
-    //  transition:opacity .4s;
-    //}
-    //.fade-leave-active{
-    //  opacity:0;
-    //  transition:opacity .3s;
-    //}
+    .main-card{
+        overflow-y: auto;
+        box-sizing: border-box;
+        margin: 15px;
+        height: 100%;
+    }
 </style>
