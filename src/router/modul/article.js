@@ -8,7 +8,7 @@ export const article = {
     path: '/article',
     name: '文章管理',
     component: Article,
-    // redirect:'/article/show',
+    redirect:'/article/show',
     meta:{
         keepAlive:true,
         menuShow:true,

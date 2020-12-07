@@ -32,7 +32,12 @@
                 </el-row>
             </el-header>
             <!--右侧主内容-->
-            <el-main class="main">
+            <el-main
+                    class="main"
+                    v-loading="loading"
+                    element-loading-text="拼命加载中"
+                    element-loading-background="#fff"
+            >
               <transition name="el-fade-in" mode="out-in">
                 <router-view></router-view>
               </transition>
@@ -45,6 +50,8 @@
     import Menu from './modul/Menu';
     import LoginAPI from "@/request/api/login";
     import router from "../router";
+    import store from "../store";
+    import loading from "../store/modul/loading";
     export default {
         name: "Layout",
         components:{
@@ -52,6 +59,7 @@
         },
         data(){
             return{
+                loading:this.$store.state.loading.isLoading,
                 menuShow:true,
                 bigView:true,
                 levelList:[
@@ -93,9 +101,9 @@
             getBreadcrumb() {
               let matched = this.$route.matched.filter(item => item.name);
               const first = matched[0];
-              if (first && first.name !== '仪表盘') {
-                matched = [{path: '/',name: '仪表盘'}].concat(matched)
-              }
+              // if (first && first.name !== '仪表盘') {
+              //   matched = [{path: '/',name: '仪表盘'}].concat(matched)
+              // }
               if(first && first.name === '仪表盘'){
                 matched ='';
               }
@@ -116,12 +124,16 @@
             }
         },
       mounted() {
+        // console.log(this.$store.state.loading.isLoading);
         this.getBreadcrumb()
       },
       watch:{
-            $route(to,form){
-                this.getBreadcrumb();
-            }
+          $route(to,form){
+              this.getBreadcrumb();
+          },
+          '$store.state.loading.isLoading':function (to,form) {
+              this.loading = this.$store.state.loading.isLoading;
+          }
       }
     }
 </script>
