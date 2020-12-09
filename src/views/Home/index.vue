@@ -1,6 +1,7 @@
 <template>
   <div class="home">
       <avue-data-display :option="dataOption"></avue-data-display>
+
   </div>
 </template>
 

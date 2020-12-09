@@ -1,7 +1,7 @@
 <template>
     <div class="article-add">
       <!--按钮-->
-      <el-row class="row btns" type="flex"  justify="end">
+      <el-row class="row btns" type="flex">
         <div>
           <el-badge :is-dot="!articleStting">
             <el-button @click="drawer = true" icon="el-icon-s-tools" type="primary">设置</el-button>
@@ -18,7 +18,7 @@
                 ref="md"
                 @change="change"
                 :toolbars="editorOption"
-                style="min-height: 550px"
+                style="min-height: 520px;margin: 0 5px 5px 5px"
       />
 
       <!--文章设置栏-->
@@ -269,7 +269,7 @@
 
 <style lang="scss" scoped>
     .row{
-      margin: 20px 0;
+      margin: 5px 0 20px 0;
     }
     .upload-box{
       margin-bottom: 20px;

@@ -5,9 +5,9 @@
             <Menu class="aside" :menuShow="menuShow"></Menu>
         </el-aside>
         <!--右侧-->
-        <el-container>
+        <el-container style="background: #F3F2F8;">
             <!--右侧头部-->
-            <el-header class="header" height="auto">
+            <el-header class="header">
                 <el-row class="row" type="flex" justify="space-between" align="center">
                     <el-col class="btn" :span="2">
                         <i class="el-icon-s-unfold" v-if="!menuShow"  @click="menuBtn"></i>
@@ -32,17 +32,12 @@
                 </el-row>
             </el-header>
             <!--右侧主内容-->
-            <el-card class="main-card">
-                <el-main
-                        class="main"
-                        v-loading="loading"
-                        element-loading-text="拼命加载中"
-                        element-loading-background="#fff"
-                >
-                  <transition name="el-fade-in" mode="out-in">
+            <el-card class="main-card" v-loading="loading" element-loading-text="拼命加载中" element-loading-background="#fff">
+                <el-main class="main">
+                    <transition name="el-fade-in" mode="out-in">
                         <router-view></router-view>
-                  </transition>
-            </el-main>
+                    </transition>
+                </el-main>
             </el-card>
         </el-container>
     </el-container>
@@ -154,7 +149,9 @@
     }
     .header{
         background: #fff;
-        //border-bottom: 1px solid #eee;
+        .row{
+            height: 100%;
+        }
         .btn{
             display: flex;
             align-items: center;
@@ -182,6 +179,7 @@
         }
     }
     .main{
+        padding: 0;
         background: #fff;
         overflow: auto;
     }
