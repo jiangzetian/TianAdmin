@@ -9,4 +9,4 @@ export const about={
         menuShow:false,
         iconClass:'el-icon-postcard',
     }
-}
+};

@@ -7,6 +7,7 @@
             :default-active="this.$route.path"
             :collapse="!menuShow"
             collapse-transition
+            unique-opened
             router
     >
         <template>

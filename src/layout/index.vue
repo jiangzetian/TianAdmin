@@ -9,7 +9,7 @@
             <!--右侧头部-->
             <el-header class="header">
                 <el-row class="row" type="flex" justify="space-between" align="center">
-                    <el-col class="btn" :span="2">
+                    <el-col class="btn" :span="1">
                         <i class="el-icon-s-unfold" v-if="!menuShow"  @click="menuBtn"></i>
                         <i class="el-icon-s-fold" v-if="menuShow"  @click="menuBtn"></i>
                     </el-col>
@@ -163,7 +163,9 @@
         }
         .path{
             .el-breadcrumb{
-              line-height: 40px;
+                display: flex;
+                align-items: center;
+                height: 100%;
             }
         }
         .avatar{
