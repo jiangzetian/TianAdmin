@@ -1,6 +1,8 @@
 <template>
     <div class="about">
-      <h2>关于我</h2>
+        <transition name="el-zoom-in-top" mode="out-in">
+            <router-view></router-view>
+        </transition>
     </div>
 </template>
 
