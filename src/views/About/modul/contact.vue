@@ -18,7 +18,7 @@
 
 <script>
     import {categoryTableOption} from '../option.js'
-    import contactAPI from "@/request/api/contact";
+    import {contactAPI} from "@/request/api/about";
     export default {
         name: "Category",
         data() {

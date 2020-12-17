@@ -183,7 +183,8 @@
     .main{
         padding: 0;
         background: #fff;
-        overflow: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
     .main-card{
         overflow-y: auto;

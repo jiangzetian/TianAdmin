@@ -39,4 +39,21 @@ const contactAPI = {
     },
 };
 
-export default contactAPI;
+const radarAPI = {
+    index(params){
+        return axios({
+            method:'GET',
+            url:`${base.baseurl}/api/charts/index`,
+            params:params,
+        })
+    },
+    update(data){
+        return axios({
+            method:'PUT',
+            url:`${base.baseurl}/api/charts/update`,
+            data:data,
+        })
+    },
+};
+
+export {contactAPI,radarAPI};
