@@ -85,7 +85,7 @@
             },
             async getRadarData(){
                 let res = await radarAPI.index({name:'aboutRadar'});
-                this.radarData = JSON.parse(res.data.data);
+                this.radarData = res.data;
                 this.initRadar();
             },
             async delItem(index){
