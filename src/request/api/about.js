@@ -1,6 +1,7 @@
 import axios from "@/request/http";
 import base from "@/request/base";
 
+//联系方式接口
 const contactAPI = {
     index(params){
         return axios({
@@ -39,6 +40,7 @@ const contactAPI = {
     },
 };
 
+//雷达图接口
 const radarAPI = {
     index(params){
         return axios({
