@@ -54,6 +54,8 @@
                 done();
             },
             async create(row,done,loading){
+                row.url = row.url[0];
+                row.img = row.img[0];
                 let res = await contactAPI.create(row);
                 this.getList();
                 done()
