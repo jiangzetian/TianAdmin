@@ -16,6 +16,7 @@ const showTableOption = {
         {
             label:'标题',
             prop:'title',
+            overHidden:true,
             search:true,
             searchRules: [{
                 required: false,
@@ -26,6 +27,7 @@ const showTableOption = {
         {
             label: "描述",
             prop:'desc',
+            overHidden:true,
         },
         {
             label: "分类",
