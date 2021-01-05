@@ -21,7 +21,7 @@
                     <el-col class="avatar">
                         <el-dropdown>
                             <span class="el-dropdown-link">
-                              <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                              <el-avatar :src="userInfo.avatar?userInfo.avatar:''"></el-avatar>
                             </span>
                             <el-dropdown-menu slot="dropdown">
                               <el-dropdown-item @click.native="signOutBtn">退出登录</el-dropdown-item>
@@ -47,8 +47,7 @@
     import Menu from './modul/Menu';
     import LoginAPI from "@/request/api/login";
     import router from "../router";
-    import store from "../store";
-    import loading from "../store/modul/loading";
+
     export default {
         name: "Layout",
         components:{
@@ -59,6 +58,7 @@
                 loading:this.$store.state.loading.isLoading,
                 menuShow:true,
                 bigView:true,
+                userInfo: this.$store.state.userInfo.userInfo,
                 levelList:[
                     {path: '/',name: '仪表盘'}
                 ]
@@ -98,9 +98,6 @@
             getBreadcrumb() {
               let matched = this.$route.matched.filter(item => item.name);
               const first = matched[0];
-              // if (first && first.name !== '仪表盘') {
-              //   matched = [{path: '/',name: '仪表盘'}].concat(matched)
-              // }
               if(first && first.name === '仪表盘'){
                 matched ='';
               }
@@ -115,14 +112,13 @@
                 });
                 if(confirm){
                     await LoginAPI.signOut({});
-                    sessionStorage.clear();
+                    this.$store.dispatch('clearUserInfo');
                     router.push({path:'/login'});
                 }
             }
         },
       mounted() {
-        // console.log(this.$store.state.loading.isLoading);
-        this.getBreadcrumb()
+        this.getBreadcrumb();
       },
       watch:{
           $route(to,form){

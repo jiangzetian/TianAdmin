@@ -35,10 +35,13 @@
                 if(!e){return false}
                 let res = await LoginAPI.signUp(e);
                 if (res.data.token){
-                    sessionStorage.setItem("token",res.data.token);
-                    this.$router.push({path:"/"})
+                    this.$store.dispatch('setUserInfo',{info:res.data});
+                    this.$router.replace({path:"/"})
                 }
             }
+        },
+        created() {
+            this.$store.dispatch('clearUserInfo');
         },
         mounted() {
         }

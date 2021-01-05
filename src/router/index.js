@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from "@/store";
 
 
 import {home} from './modul/home'
@@ -9,6 +10,7 @@ import {about} from './modul/about'
 import {article} from './modul/article'
 import {user} from './modul/user'
 import {seting} from './modul/seting'
+import el from "element-ui/src/locale/lang/el";
 
 
 Vue.use(VueRouter);
@@ -37,11 +39,13 @@ router.beforeEach((to, from, next) => {
   if (to.path == "/login") {
     next();
   } else {
-    const token = sessionStorage.getItem("token");
-    console.log();
-    if (token) {
-      next();
-    } else {
+    if (store.state.userInfo.userInfo){
+      if (store.state.userInfo.userInfo.token){
+        next();
+      }else {
+        router.push({path: "/login"});
+      }
+    }else{
       router.push({path: "/login"});
     }
   }

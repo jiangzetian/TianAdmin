@@ -1,5 +1,5 @@
-const categoryTableOption =  {
-    title:'社媒管理',
+const linksTableOption =  {
+    title:'友链管理',
     page:true,
     align:'center',
     menuAlign:'center',
@@ -27,6 +27,7 @@ const categoryTableOption =  {
         {
             label:'描述',
             prop:'desc',
+            overHidden:true,
             rules: [{
                 required: true,
                 message: "请输入联系的描述",
@@ -83,5 +84,5 @@ const categoryTableOption =  {
 };
 
 export {
-    categoryTableOption,
+    linksTableOption,
 }
