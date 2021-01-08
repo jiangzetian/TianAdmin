@@ -14,7 +14,7 @@ export const seting ={
     children: [
         {
             path: 'links',
-            name: '友链管理',
+            name: '友情链接',
             component: Links,
             meta:{
                 keepAlive:true,

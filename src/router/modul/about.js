@@ -15,7 +15,7 @@ export const about={
     children: [
         {
             path: 'radar',
-            name: '雷达图管理',
+            name: '雷达图示',
             component: Radar,
             meta:{
                 keepAlive:true,
@@ -24,7 +24,7 @@ export const about={
         },
         {
             path: 'contact',
-            name: '联系管理',
+            name: '社交媒体',
             component: Contact,
             meta:{
                 keepAlive:true,
