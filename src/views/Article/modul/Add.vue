@@ -17,8 +17,9 @@
                 v-model="content"
                 ref="md"
                 @change="change"
+                :codeStyle="codeStyle"
                 :toolbars="editorOption"
-                style="min-height: 520px;margin: 0 5px 5px 5px"
+                style="min-height: 520px;height:calc(100vh - 220px);margin: 0 5px 5px 5px"
       />
 
       <!--文章设置栏-->
@@ -133,6 +134,7 @@
               categoryData:{},//文章分类数据
               content:'', // 输入的markdown
               html:'',    // 及时转的html
+              codeStyle:'monokai',//代码高亮主题
               drawer: false,//设置栏目
               imgToken:{},//图片上传token
               fileList: [],//上传文件列表
