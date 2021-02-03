@@ -58,4 +58,21 @@ const radarAPI = {
     },
 };
 
-export {contactAPI,radarAPI};
+const resumeAPI = {
+    index(params){
+        return axios({
+            method:'GET',
+            url:`${base.baseurl}/api/resume/index`,
+            params:params,
+        })
+    },
+    update(data){
+        return axios({
+            method:'PUT',
+            url:`${base.baseurl}/api/resume/update`,
+            data:data,
+        })
+    },
+};
+
+export {contactAPI,radarAPI,resumeAPI};
