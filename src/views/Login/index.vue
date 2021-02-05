@@ -1,19 +1,17 @@
 <template>
-    <div id="login">
-        <el-row class="row" type="flex" justify="space-around" align="middle">
-            <el-col :md="8" :sm="12" :xs="22">
-                <el-card class="card">
-                    <template slot="header">
-                        <div class="logo">
-                            <img src="../../assets/天小天白衣LOGO.jpg" alt="LOGO">
-                        </div>
-                        <h2 class="title">TianAdmin</h2>
-                    </template>
+    <el-row class="layout" type="flex" justify="center" align="middle">
+        <div class="loginCard">
+            <div class="loginImg">
+                <img src="@/assets/天小天白衣LOGO.jpg" alt="">
+                <p>TianAdmin博客管理后台</p>
+            </div>
+            <div class="loginInput">
+                <div class="formBox">
                     <avue-login :option="option" @submit="submit"></avue-login>
-                </el-card>
-            </el-col>
-        </el-row>
-    </div>
+                </div>
+            </div>
+        </div>
+    </el-row>
 </template>
 
 <script>
@@ -49,48 +47,45 @@
 </script>
 
 <style scoped lang="scss">
-#login{
-    width: 100%;
-    height: 100%;
-    background: url("https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=zh-CN") center no-repeat;
-    background-size:cover;
-    -webkit-background-size:cover;
-    -moz-background-size:cover;
-    .row{
+    .layout{
         width: 100%;
         height: 100%;
-    }
-    .card{
-        position: relative;
-    }
-    /deep/.el-card{
-        overflow: visible;
-    }
-    .logo{
-        position: absolute;
-        top: 0;
-        right: 20px;
-        width: 100px;
-        height: 100px;
-        border-radius: 100%;
-        transform: translateY(-50%);
-        overflow: hidden;
-        box-shadow:0 -5px 5px rgba(0,0,0,0.2);
-        img{
+        background: #F5F5FA;
+        .loginCard{
+            background: #fff;
             width: 100%;
+            height: 100%;
+            max-width: 1000px;
+            max-height: 550px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .loginImg{
+            background: #1890FF;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            img{
+                max-width: 120px;
+                border-radius: 100%;
+            }
+            p{
+                margin: 20px 0;
+                font-size: 22px;
+                color: #fff;
+            }
+        }
+        .loginInput{
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .formBox{
+            width: 100%;
+            max-width: 380px;
         }
     }
-    .title{
-        display: inline-block;
-        margin: 0 5px;
-    }
-    @media screen and (max-width: 767px) {
-        .logo{
-            /*position: static;*/
-            /*transform:none;*/
-            /*margin: 0 auto;*/
-            /*box-shadow:0 0 5px rgba(0,0,0,0.2);*/
-        }
-    }
-}
 </style>
